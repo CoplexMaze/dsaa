@@ -43,6 +43,25 @@ public class BinaryTreeOrder {
         System.out.print("递归后序： ");
         postOrderRecusion(tn1);
         System.out.println();
+
+        System.out.print("广度优先遍历： ");
+        levelOrder(tn1);
+        System.out.println();
+    }
+
+    /**
+     * 广度优先遍历二叉树
+     * @param r
+     */
+    public static void levelOrder(BinaryTreeNode r) {
+        ArrayDeque<BinaryTreeNode> adq = new ArrayDeque();
+        if (r != null) adq.addLast(r);
+        while (!adq.isEmpty()) {
+            r =  adq.pop();
+            System.out.print(r.val + " ");
+            if (r.leftNode != null) adq.addLast(r.leftNode);
+            if (r.rightNode != null) adq.addLast(r.rightNode);
+        }
     }
 
     /**
@@ -74,7 +93,18 @@ public class BinaryTreeOrder {
      * @param r
      */
     public static void inOrderNotRecsion(BinaryTreeNode r) {
-
+        ArrayDeque adq = new ArrayDeque<BinaryTreeNode>();
+        while (!adq.isEmpty() || r != null) {
+            if (r != null) {
+                adq.addLast(r);
+                r = r.leftNode;
+            } else {
+                r = (BinaryTreeNode) adq.peekLast();
+                adq.removeLast();
+                System.out.print(r.val + " ");
+                r = r.rightNode;
+            }
+        }
     }
 
     /**
@@ -93,7 +123,21 @@ public class BinaryTreeOrder {
      * @param r 根结点
      */
     public static void postOrderNotRecusion(BinaryTreeNode r) {
-
+        ArrayDeque<BinaryTreeNode> adq = new ArrayDeque<>();
+        BinaryTreeNode pre = null;
+        while (r != null) {
+            for (; r.leftNode != null; r = r.leftNode)
+                adq.addLast(r);
+            while (r != null && (r.rightNode == null || r.rightNode == pre)) {
+                System.out.print(r.val + " ");
+                pre = r;
+                if (adq.isEmpty()) return;
+                r = adq.peekLast();
+                adq.removeLast();
+            }
+            adq.addLast(r);
+            r = r.rightNode;
+        }
     }
 
     /**
