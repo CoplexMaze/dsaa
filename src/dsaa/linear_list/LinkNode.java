@@ -1,8 +1,8 @@
-package dsaa;
+package dsaa.linear_list;
 
 public class LinkNode<T> {
     T val;
-    LinkNode next;
+    public LinkNode<T> next;
 
     public LinkNode() {
         val = null;
@@ -19,7 +19,8 @@ public class LinkNode<T> {
         next = linkNode;
     }
 
-    public void printLink(LinkNode<T> node) {
+    public void printLink() {
+        LinkNode node = this;
         while(node.next != null) {
             System.out.print(node.val + "->");
             node = node.next;

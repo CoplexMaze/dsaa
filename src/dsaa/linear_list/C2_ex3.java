@@ -1,7 +1,7 @@
 /**
  * 给定一个不带头结点的单链表，写出将链表倒置的算法。
  */
-package dsaa;
+package dsaa.linear_list;
 
 public class C2_ex3 {
     public static void main(String[] args) {
@@ -11,12 +11,12 @@ public class C2_ex3 {
         LinkNode n1 = new LinkNode<String>("n1", n2);
         LinkNode n0 = new LinkNode<String>("n0", n1);
 
-        n0.printLink(n0);
+        n0.printLink();
 
         inversion(n0);
 
-        n0.printLink(n0);
-        n0.printLink(n4);
+        n0.printLink();
+        n0.printLink();
 
     }
 

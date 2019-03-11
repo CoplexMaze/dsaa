@@ -1,9 +1,9 @@
-package dsaa;
+package dsaa.tree;
 
-public class BinaryTreeNode<T> {
+public class BinaryTreeNode<T>{
     T val;
-    BinaryTreeNode leftNode;
-    BinaryTreeNode rightNode;
+    BinaryTreeNode<T> leftNode;
+    BinaryTreeNode<T> rightNode;
 
     BinaryTreeNode() {
         val = null;
@@ -15,7 +15,7 @@ public class BinaryTreeNode<T> {
         leftNode = rightNode = null;
     }
 
-    BinaryTreeNode(T v, BinaryTreeNode l, BinaryTreeNode r) {
+    BinaryTreeNode(T v, BinaryTreeNode<T> l, BinaryTreeNode<T> r) {
         val = v;
         leftNode = l;
         rightNode = r;
