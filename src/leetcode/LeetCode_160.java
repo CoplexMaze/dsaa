@@ -1,8 +1,7 @@
 package leetcode;
 import dsaa.linear_list.LinkList;
-import dsaa.linear_list.LinkNode;
+import dsaa.linear_list.ListNode;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,9 +29,9 @@ public class LeetCode_160 {
      * @param headB
      * @return
      */
-    public static LinkNode getIntersectionNode(LinkNode headA, LinkNode headB) {
+    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) return null;
-        LinkNode nA = headA, nB = headB;
+        ListNode nA = headA, nB = headB;
         int count = 0;
         while (nA != nB) {
             if (nA.next == null) {

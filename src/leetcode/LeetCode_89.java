@@ -2,11 +2,13 @@ package leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class LeetCode_89 {
     public static void main(String[] args) {
         System.out.println(grayCode(3));
+        System.out.println(grayCodeRecusion(3));
     }
 
     /**
@@ -28,5 +30,37 @@ public class LeetCode_89 {
             res.add(i ^ (i/2));
         }
         return res;
+    }
+
+    /**
+     *
+     第一步：产生 0, 1 两个字符串。
+     第二步：在第一步的基础上，每一个字符串都加上0和1，但是每次只能加一个，所以得做两次。这样就变成了 00,01,11,10（注意对称）。
+     第三步：在第二步的基础上，再给每个字符串都加上0和1，同样，每次只能加一个，这样就变成了000,001,011,010,110,111,101,100。
+     * @param n
+     * @return
+     */
+    public static List<Integer> grayCodeRecusion(int n) {
+        if (n == 0) {
+            List<Integer> list = Arrays.asList(0);
+            return list;
+        } else if (n > 0){
+            List<Integer> tmp = grayCodeRecusion(--n);
+            List<Integer> list = new ArrayList<>();
+            int len = tmp.size();
+            for (int i = 0; i < len; i++) {
+                int j = tmp.get(i);
+                if ((i & 1) == 0) {
+                    list.add(j<<1);
+                    list.add((j<<1) + 1);
+                } else {
+                    list.add((j<<1) + 1);
+                    list.add(j<<1);
+                }
+            }
+            return list;
+        } else {
+            return null;
+        }
     }
 }

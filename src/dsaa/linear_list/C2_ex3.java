@@ -5,11 +5,11 @@ package dsaa.linear_list;
 
 public class C2_ex3 {
     public static void main(String[] args) {
-        LinkNode n4 = new LinkNode<String>("n4");
-        LinkNode n3 = new LinkNode<String>("n3", n4);
-        LinkNode n2 = new LinkNode<String>("n2", n3);
-        LinkNode n1 = new LinkNode<String>("n1", n2);
-        LinkNode n0 = new LinkNode<String>("n0", n1);
+        ListNode n4 = new ListNode<String>("n4");
+        ListNode n3 = new ListNode<String>("n3", n4);
+        ListNode n2 = new ListNode<String>("n2", n3);
+        ListNode n1 = new ListNode<String>("n1", n2);
+        ListNode n0 = new ListNode<String>("n0", n1);
 
         n0.printLink();
 
@@ -20,10 +20,10 @@ public class C2_ex3 {
 
     }
 
-    public static LinkNode inversion(LinkNode s) {
+    public static ListNode inversion(ListNode s) {
         if (s == null) return null;
         if (s.next == null) return s;
-        LinkNode n1 = s, n2 = s.next, n3 = s.next.next;
+        ListNode n1 = s, n2 = s.next, n3 = s.next.next;
         while (n3 != null) {
             n2.next = n1;
             n1 = n2;
